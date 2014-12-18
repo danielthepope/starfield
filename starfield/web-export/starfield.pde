@@ -21,7 +21,7 @@ void draw() {
   background(skyColor);
   
   translate(sketchWidth / 2, sketchHeight / 2);
-  scale(0.5 * sketchWidth / (float)mouseX);
+  scale(0.2 * sketchWidth / (float)mouseX);
   translate(-sketchWidth / 2, -sketchHeight / 2);
   for(star s : stars) {
     s.render();
@@ -48,11 +48,12 @@ class star {
     y = posY;
     colour = starColour;
     magnitude = size;
+    age = random(5000);
   }
   
   void render() {
-    strokeWeight(abs(focus) + magnitude);
-    color lerp = lerpColor(colour, #ffffff, noise(age / 20.0));
+    strokeWeight(abs(focus * noise(age / 20.0)) + magnitude);
+    color lerp = lerpColor(colour, #ffffff, noise((age+500) / 20.0));
     color c = color(red(lerp), green(lerp), blue(lerp),
         128 + (128.0*((20-abs(focus))/20.0)));
     stroke(c);

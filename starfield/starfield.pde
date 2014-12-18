@@ -21,7 +21,7 @@ void draw() {
   background(skyColor);
   
   translate(sketchWidth / 2, sketchHeight / 2);
-  scale(0.5 * sketchWidth / (float)mouseX);
+  scale(0.2 * sketchWidth / (float)mouseX);
   translate(-sketchWidth / 2, -sketchHeight / 2);
   for(star s : stars) {
     s.render();
